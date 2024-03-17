@@ -223,13 +223,13 @@ void boundaryTraversal(Node* root ) {
 	if(root == NULL)
 		return;
 		
-	cout << root->data << " ";
-	printLeftBoundary(root->left);
+	cout << root->data << " "; //root node lelo 
+	printLeftBoundary(root->left); //then take left branch
 	
-	printLeafBoundary(root->left);
-	printLeafBoundary(root->right);
+	printLeafBoundary(root->left); //leaf nodes of left side
+	printLeafBoundary(root->right); //right side leafs
 	
-	printRightBoundary(root->right);
+	printRightBoundary(root->right); //right side branch
 }
 
 int main() {
