@@ -95,6 +95,20 @@ class Graph{
             }
             
         }
+        
+        void dfsTraversal(T src,unordered_map<T,bool>& vis){
+            //stack use -> recursion 
+            vis[src]=true;
+            cout<<src<<" ";
+            
+            //go to child and recursion 
+            for(auto nbr: adjList[src]){
+                T nbrData=nbr.first;
+                if(!vis[nbrData]){
+                    dfsTraversal(nbrData,vis);
+                }
+            }
+        }
 };
 
 //Tc and Sc ???
@@ -110,20 +124,25 @@ int main(){
     
     g.addEdge('a','b',5,1);
     g.addEdge('b','c',10,1); 
+    g.addEdge('c','d',20,1);
+    g.addEdge('c','e',20,1);
     g.addEdge('d','e',20,1);
+    g.addEdge('e','f',20,1);
+    g.addEdge('f','f',20,1);
+    
+    g.dfsTraversal('a',vis);
     
     for(char node='a';node<='f';node++){
         if(!vis[node]){
-            g.bfsTraversal(node,vis);
+            g.dfsTraversal(node,vis);
         }
     }
+    
+    
     
     return 0;
 }
 
 
 
-
-
-Time Complexity - depends on adj list - O(N^2) {Worst case}
-Space Complexity - O(N) -> all nodes
+// Q. Find out number of disconnected components in a graph?
